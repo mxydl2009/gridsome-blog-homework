@@ -150,33 +150,118 @@
         </div>
       </div>
     </header>
-    <slot/>
-          <!-- 页面页脚 -->
-      <section class="foot">
-        <div style="border-top: 1px solid rgb(225, 228, 232) !important; padding: 45px 0px;">
-          <div class="el-row">
-            <div class="el-col el-col-10">
-              <div>
-				        © 2018 GitHub-Laziji  
-				        <a style="margin: 0 20px" href="https://github.com/GitHub-Laziji" target="_blank">Profile</a>  
-				        <a style="margin: 0 20px" href="https://github.com/GitHub-Laziji/vblog" target="_blank">VBlog</a>
+    <!-- 页面主体模板 -->
+    <section class="main-content">
+      <div class="el-row">
+        <div class="el-col el-col-6" style="padding-right: 10px;">
+          <div>
+            <div class="el-card is-never-shadow">
+              <!---->
+              <div class="el-card__body">
+                <ul role="menubar" class="el-menu">
+                  <li role="menuitem" tabindex="-1" class="el-menu-item is-active" style="padding-left: 20px;">
+                    <i class="el-icon-star-off"></i>
+                    <g-link to="/">最新动态</g-link>
+                  </li>
+                  <li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 20px;">
+                    <i class="el-icon-mobile-phone"></i>
+                    <g-link to="/social">社交圈</g-link>
+                  </li>
+                  <li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 20px;">
+                    <i class="el-icon-edit-outline"></i>
+                    <g-link to="/blog">博客列表</g-link>
+                  </li>
+                  <li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 20px;">
+                    <i class="el-icon-service"></i>
+                    <g-link to="/project">开源项目</g-link>
+                  </li>
+                  <li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 20px;">
+                    <i class="el-icon-printer"></i>
+                    <span>使用帮助</span>
+                  </li>
+                  <li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 20px;">
+                    <i class="el-icon-document"></i>
+                    <span>README.md</span>
+                  </li>
+                  <!----><!----><!----><!----><!----><!----><!---->
+                </ul>
               </div>
             </div>
-            <div class="el-col el-col-4">
-              <div style="text-align: center; font-size: 18px;">
-                <i class="el-icon-location-outline"></i>
+            <div class="el-card is-never-shadow" style="margin-top: 20px; text-align: center;">
+              <!---->
+              <div class="el-card__body">
+                <div style="font-size: 0.9rem; line-height: 1.5; color: rgb(96, 108, 113);">
+                  <span class="el-tag el-tag--danger el-tag--small">&nbsp;<!----></span>&nbsp;&nbsp; Token未绑定&nbsp;&nbsp;
+                  <button type="button" class="el-button el-button--text"><!----><!---->
+                    <span>绑定</span>
+                  </button>
+                </div>
+                <!---->
+                <div style="margin-top: 10px; text-align: left;">
+                  <div role="alert" class="el-alert el-alert--info">
+                  <!---->
+                    <div class="el-alert__content">
+                      <span class="el-alert__title is-bold">Token获取</span>
+                      <p class="el-alert__description">在 github-&gt; settings-&gt; developerSettings-&gt; personalAccessTokens 勾选gist权限,获取Token. 详情参考README.md</p>
+                      <i class="el-alert__closebtn el-icon-close" style="display: none;"></i>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="el-col el-col-10">
-              <div style="float: right;">
-                <a style="margin: 0 20px" href="https://developer.github.com" target="_blank">GitHub-API</a>  
-				        <a style="margin: 0 20px" href="https://cn.vuejs.org/" target="_blank">Vue.js</a>  
-				        <a style="margin: 0 20px" href="http://element.eleme.io/" target="_blank">Element</a>
+            <div>
+              <div class="el-dialog__wrapper" style="display: none;">
+                <div class="el-dialog" style="width: 500px; margin-top: 15vh;">
+                  <div class="el-dialog__header">
+                    <span class="el-dialog__title">绑定Token</span>
+                    <button type="button" aria-label="Close" class="el-dialog__headerbtn">
+                      <i class="el-dialog__close el-icon el-icon-close"></i>
+                    </button>
+                  </div><!---->
+                  <div class="el-dialog__footer">
+                    <span class="dialog-footer">
+                      <button type="button" class="el-button el-button--default"><!----><!---->
+                        <span>取 消</span>
+                      </button>
+                      <button type="button" class="el-button el-button--primary"><!----><!---->
+                        <span>确 定</span>
+                      </button>
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
+        <slot/>
+      </div>
+    </section>
+    <!-- 页面页脚 -->
+    <section class="foot">
+      <div style="border-top: 1px solid rgb(225, 228, 232) !important; padding: 45px 0px;">
+        <div class="el-row">
+          <div class="el-col el-col-10">
+            <div>
+              © 2018 GitHub-Laziji  
+              <a style="margin: 0 20px" href="https://github.com/GitHub-Laziji" target="_blank">Profile</a>  
+              <a style="margin: 0 20px" href="https://github.com/GitHub-Laziji/vblog" target="_blank">VBlog</a>
+            </div>
+          </div>
+          <div class="el-col el-col-4">
+            <div style="text-align: center; font-size: 18px;">
+              <i class="el-icon-location-outline"></i>
+            </div>
+          </div>
+          <div class="el-col el-col-10">
+            <div style="float: right;">
+              <a style="margin: 0 20px" href="https://developer.github.com" target="_blank">GitHub-API</a>  
+              <a style="margin: 0 20px" href="https://cn.vuejs.org/" target="_blank">Vue.js</a>  
+              <a style="margin: 0 20px" href="http://element.eleme.io/" target="_blank">Element</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
