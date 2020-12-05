@@ -2,7 +2,7 @@
   <div class="layout">
     <header class="header">
       <!-- 全局样式 -->
-      <link rel="stylesheet" href="/css/index.css">
+      <!-- <link rel="stylesheet" href="/css/index.css"> -->
       <!-- 页面头部 -->
       <section class="page-header" style="background-image: linear-gradient(120deg, rgb(38, 144, 249), rgb(252, 45, 45)); color: rgb(255, 255, 255);">
         <div style="position: absolute; top: 20px; right: 20px; z-index: 2;">
