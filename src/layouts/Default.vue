@@ -1,7 +1,9 @@
 <template>
   <div class="layout">
     <header class="header">
+      <!-- 全局样式 -->
       <link rel="stylesheet" href="/css/index.css">
+      <!-- 页面头部 -->
       <section class="page-header" style="background-image: linear-gradient(120deg, rgb(38, 144, 249), rgb(252, 45, 45)); color: rgb(255, 255, 255);">
         <div style="position: absolute; top: 20px; right: 20px; z-index: 2;">
           <button type="button" class="el-button el-tooltip el-button--default is-circle" aria-describedby="el-tooltip-268" tabindex="0">
@@ -149,6 +151,32 @@
       </div>
     </header>
     <slot/>
+          <!-- 页面页脚 -->
+      <section class="foot">
+        <div style="border-top: 1px solid rgb(225, 228, 232) !important; padding: 45px 0px;">
+          <div class="el-row">
+            <div class="el-col el-col-10">
+              <div>
+				        © 2018 GitHub-Laziji  
+				        <a style="margin: 0 20px" href="https://github.com/GitHub-Laziji" target="_blank">Profile</a>  
+				        <a style="margin: 0 20px" href="https://github.com/GitHub-Laziji/vblog" target="_blank">VBlog</a>
+              </div>
+            </div>
+            <div class="el-col el-col-4">
+              <div style="text-align: center; font-size: 18px;">
+                <i class="el-icon-location-outline"></i>
+              </div>
+            </div>
+            <div class="el-col el-col-10">
+              <div style="float: right;">
+                <a style="margin: 0 20px" href="https://developer.github.com" target="_blank">GitHub-API</a>  
+				        <a style="margin: 0 20px" href="https://cn.vuejs.org/" target="_blank">Vue.js</a>  
+				        <a style="margin: 0 20px" href="http://element.eleme.io/" target="_blank">Element</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
   </div>
 </template>
 
