@@ -6,5 +6,18 @@
 
 module.exports = {
   siteName: 'Gridsome',
-  plugins: []
+  plugins: [
+    // {
+    //   use: "gridsome-source-rest",
+    //   options: {
+    //     debug: false,
+    //     axiosConfig: undefined,
+    //     endpoint: "https://api.github.com/users/GitHub-Laziji/followers",
+    //     typeName: "gist",
+    //     isStatic: false,
+    //     isCollection: true,
+    //     responseInterceptor: undefined
+    //   }
+    // }
+  ]
 }

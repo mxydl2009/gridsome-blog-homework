@@ -4,10 +4,82 @@
 
 // Changes here require a server restart.
 // To restart press CTRL + C in terminal and run `gridsome develop`
+const axios = require('axios')
 
 module.exports = function (api) {
-  api.loadSource(({ addCollection }) => {
-    // Use the Data Store API here: https://gridsome.org/docs/data-store-api/
+  // api.loadSource(({ addCollection }) => {
+  //   // Use the Data Store API here: https://gridsome.org/docs/data-store-api/
+  // })
+ 
+  api.loadSource(async actions => {
+
+    // 博客列表
+    const { data: gists } = await axios.get('https://api.github.com/users/GitHub-Laziji/gists?page=1&per_page=5')
+    // const { data: gists } = await axios.get('https://api.github.com/users/GitHub-Laziji/repos')
+    const { data: gist } = await axios.get(gists[0].url)
+    const Gists = actions.addCollection({
+      typeName: 'Gist'
+    })
+    Gists.addNode({
+      id: gist.id,
+      url: gist.url,
+      files: {
+        filename: gist.files['2018.5.19 更新'].filename,
+        content: gist.files['2018.5.19 更新'].content
+      },
+      created_at: gist.created_at,
+      updated_at: gist.updated_at,
+      description: gist.description
+    })
+
+    // followers列表
+    const { data: followers } = await axios.get('https://api.github.com/users/GitHub-Laziji/followers')
+    const Followers = actions.addCollection({
+      typeName: 'Follower'
+    })
+
+    for (let item of followers) {
+      Followers.addNode({
+        id: item.id,
+        login: item.login,
+        avatar_url: item.avatar_url,
+        html_url: item.html_url
+      })
+    }
+    // following列表
+    const { data: following } = await axios.get('https://api.github.com/users/GitHub-Laziji/following')
+    const Following = actions.addCollection({
+      typeName: 'Following'
+    })
+
+    for (let item of following) {
+      Following.addNode({
+        id: item.id,
+        login: item.login,
+        avatar_url: item.avatar_url,
+        html_url: item.html_url
+      })
+    }
+    // projects列表
+    const { data: repos } = await axios.get('https://api.github.com/users/GitHub-Laziji/repos')
+    const Repos = actions.addCollection({
+      typeName: 'Repo'
+    })
+
+    for (let item of repos) {
+      Repos.addNode({
+        id: item.id,
+        name: item.name,
+        html_url: item.html_url,
+        description: item.description,
+        updated_at: item.updated_at,
+        license: item.license.name,
+        language: item.language,
+        stargazers_count: item.stargazers_count,
+        watchers_count: item.watchers_count,
+        forks_count: item.forks_count
+      })
+    }
   })
 
   api.createPages(({ createPage }) => {
