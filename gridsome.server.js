@@ -13,9 +13,8 @@ module.exports = function (api) {
  
   api.loadSource(async actions => {
 
-    // 博客列表
+    // 首页
     const { data: gists } = await axios.get('https://api.github.com/users/GitHub-Laziji/gists?page=1&per_page=5')
-    // const { data: gists } = await axios.get('https://api.github.com/users/GitHub-Laziji/repos')
     const { data: gist } = await axios.get(gists[0].url)
     const Gists = actions.addCollection({
       typeName: 'Gist'
@@ -24,13 +23,29 @@ module.exports = function (api) {
       id: gist.id,
       url: gist.url,
       files: {
-        filename: gist.files['2018.5.19 更新'].filename,
-        content: gist.files['2018.5.19 更新'].content
+        filename: Object.values(gist.files)[0].filename,
+        content: Object.values(gist.files)[0].content
       },
       created_at: gist.created_at,
       updated_at: gist.updated_at,
       description: gist.description
     })
+
+    // 博客列表
+    const { data: gistsList } = await axios.get('https://api.github.com/users/GitHub-Laziji/gists')
+    const GistsList = actions.addCollection({
+      typeName: 'GistList'
+    })
+    for (let item of gistsList) {
+      GistsList.addNode({
+        id: item.id,
+        url: item.url,
+        filename: Object.values(item.files)[0].filename,
+        updated_at: item.updated_at,
+        description: item.description
+      })
+    }
+    
 
     // followers列表
     const { data: followers } = await axios.get('https://api.github.com/users/GitHub-Laziji/followers')
@@ -73,7 +88,7 @@ module.exports = function (api) {
         html_url: item.html_url,
         description: item.description,
         updated_at: item.updated_at,
-        license: item.license.name,
+        license: item.license,
         language: item.language,
         stargazers_count: item.stargazers_count,
         watchers_count: item.watchers_count,

@@ -7,4 +7,8 @@ import '../static/css/index.css'
 export default function (Vue, { router, head, isClient }) {
   // Set default layout as a global component
   Vue.component('Layout', DefaultLayout)
+  Vue.filter('timeStampFilter', function (value) {
+    if(!value) return ''
+    return value.toString().replace('T', ' ').replace('Z', ' ')
+  })
 }

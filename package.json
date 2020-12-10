@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "axios": "^0.21.0",
-    "gridsome": "^0.7.0",
-    "gridsome-source-rest": "^1.0.11"
+    "gridsome": "^0.7.0"
   }
 }

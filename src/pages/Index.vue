@@ -73,13 +73,7 @@ export default {
       img_src = img_src.slice(from + 1, end)
       return img_src
     }
-  },
-  filters: {
-      timeStampFilter(value) {
-        if(!value) return ''
-        return value.toString().replace('T', ' ').replace('Z', ' ')
-      }
-    }
+  }
 }
 </script>
 
